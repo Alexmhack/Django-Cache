@@ -30,6 +30,6 @@ def view_cached_products(request):
 		products = Product.objects.all()
 		results = [product.to_json() for product in products]
 
-		# store products in cache
-		cache.set(products, results, timeout=CACHE_TTL)
+		# store products in cache -> ('key', 'value', timeout)
+		cache.set('product', results, timeout=CACHE_TTL)
 		return Response(data=results, status=status.HTTP_201_CREATED)
