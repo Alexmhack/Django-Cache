@@ -17,3 +17,12 @@ class Product(models.Model):
 
 	def __str__(self):
 		return str(self.name)
+
+	def to_json(self):
+		return {
+			'name': str(self.name),
+			'description': str(self.description),
+			'price': str(self.price),
+			'timestamp': str(self.timestamp),
+			'updated': str(self.updated),
+		}
